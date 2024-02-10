@@ -30,7 +30,10 @@ const MenubuttonNav2 = () => {
         ref={menubutton}
         style={{
           transform: `translate(${xPos}px, ${yPos}px) ${
-            !navbar2bool && scrollyvalue < 20 &&  window.innerWidth > 568
+            !navbar2bool &&
+            scrollyvalue < 20 &&
+            typeof window !== "undefined" &&
+            window.innerWidth > 568
               ? "scale(0)"
               : "scale(1)"
           }`,
