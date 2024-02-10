@@ -26,6 +26,7 @@ import "swiper/css/pagination";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 
 import "swiper/css/bundle";
+import Image from "next/image";
 
 const Toolscomponent = () => {
   // const skillref0 = useRef();
@@ -212,7 +213,8 @@ const Toolscomponent = () => {
                   key={item.id}
                 >
                   <div className=" w-[300px] h-[300px] ml-5">
-                    <img src={item.image} alt="" className=" w-[90%]" />
+                    <Image src={item.image} alt="skill image" className=" w-[90%]" />
+                    {/* <img  /> */}
                   </div>
                   <p className=" text-3xl text-white capitalize">{item.name}</p>
                 </div>

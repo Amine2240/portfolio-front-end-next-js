@@ -10,6 +10,7 @@ import amineetic1 from "../../assets/amineetic1.jpg";
 import aminedahou from "../../assets/aminedahou.jpg";
 import SplitType from "split-type";
 import Toolscomponent from "../../components/toolscomponent";
+import Image from "next/image";
 
 const About = () => {
   useEffect(() => {
@@ -159,18 +160,18 @@ const About = () => {
             </span>
           </p>
           <div className=" lg:w-[450px] lg:h-[600px] md:w-[400px] md:h-[550px] sm:w-[350px] sm:h-[500px] w-[450px]   overflow-hidden">
-            <img
+            <Image
               src={aminedahou}
               ref={dahoudivref}
               alt=""
               className=" w-full object-cover"
-              loading="lazy"
+              
             />
           </div>
         </div>
         <div className=" flex flex-wrap-reverse  place-content-around items-center w-[100vw] gap-36 my-20">
           <div className=" lg:w-[450px] lg:h-[600px] md:w-[400px] md:h-[550px] sm:w-[350px] sm:h-[500px] w-[450px] overflow-hidden">
-            <img
+            <Image
               src={amineetic1}
               ref={eticdivref}
               alt=""
