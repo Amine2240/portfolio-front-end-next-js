@@ -1,0 +1,25 @@
+.slide-in {
+  width: 100%;
+  height: 130vh;
+  background-color: #16181a;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform-origin: bottom ;
+  z-index: 50;
+  
+  clip-path: circle(180vh at 50% 180vh);
+}
+
+.slide-out {
+  width: 100%;
+  height: 100vh;
+  background-color: #16181a;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform-origin: top ;
+  z-index: 50;
+  clip-path: circle(180vh at 50% -80vh);
+
+}

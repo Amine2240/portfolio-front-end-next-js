@@ -1,0 +1,51 @@
+/* .myradio:checked+.mylabel {
+  background-color: rgba(255, 0, 0, 0.247);
+  transition: all ease .5s;
+} */
+
+.navfalse {
+  clip-path: circle(0px at calc(100% - 75px) 75px);
+  background-color: black;
+  /* display: none; */
+
+}
+
+.navtrue {
+  clip-path: circle(80%);
+  background-color: black;
+}
+
+.mytext {
+  /* font-kerning: none; */
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+/* .mytext:hover{
+  color: red;
+} */
+
+.bgtmp {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.508), transparent);
+}
+
+.scrollindic {
+  animation: scrollindicanimation 1.5s infinite;
+}
+
+@keyframes scrollindicanimation {
+  0% {
+    top: 0;
+    opacity: 0;
+  }
+
+  50% {
+    top: 40%;
+    opacity: 1;
+  }
+
+  100% {
+    top: 80%;
+    opacity: 0;
+  }
+
+}
