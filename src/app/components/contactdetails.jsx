@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-no-target-blank */
 import { useRef, useEffect, useState } from "react";
 import amine1 from "../assets/amine01compressed.webp";
+import Image from "next/image";
 
 const Contactdetails = () => {
   const contactref = useRef();
@@ -30,7 +31,7 @@ const Contactdetails = () => {
         className="  flex xl:flex-col xl:h-[600px] lg:h-[400px] md:h-[200px]  place-content-around flex-wrap  md:fixed xl:top-20 md:top-32 sm:right-0  xl:w-[30%] md:w-[40%] w-[90%]"
       >
         <div className=" h-28 w-28 mx-auto bg-[#335e79] rounded-full overflow-hidden mb-5">
-          <img
+          <Image
             src={amine1}
             alt=""
             className=" translate-y-1 scale-110 w-full"

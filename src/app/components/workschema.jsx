@@ -7,6 +7,9 @@ import { sethoverbooleen } from "../redux/hoverslice";
 // gsap.registerPlugin(ScrollTrigger);
 // import { useEffect } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 const Workschema = ({ item }) => {
   const dispatch = useDispatch();
@@ -22,6 +25,12 @@ const Workschema = ({ item }) => {
   //   })
 
   // }, []);
+  const router = useRouter();
+  const pathname = usePathname();
+  useEffect(() => {
+  
+    dispatch(sethoverbooleen(false));
+  }, [dispatch , pathname]);
   return (
     <div>
       <a href={item.weblink} target="_blank">

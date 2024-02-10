@@ -1,9 +1,9 @@
 /* eslint-disable react/jsx-no-target-blank */
 /* eslint-disable react/no-unknown-property */
-// import { useNavigate } from "react-router-dom"; 
+// import { useNavigate } from "react-router-dom";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-"use client"
+"use client";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
@@ -11,6 +11,7 @@ import { useEffect, useRef, useState } from "react";
 import amine1 from "../assets/amine01compressed.webp";
 import { hoverfunction } from "./hoverfunction";
 import Minifooter from "./minifooter";
+import Image from "next/image";
 // import { motion } from "framer-motion";
 const Footer = () => {
   // const navigateTo = useNavigate();
@@ -68,7 +69,7 @@ const Footer = () => {
     >
       <div className=" h-[95vh] flex flex-col place-content-between">
         <div className=" h-32 w-32 mx-auto bg-[#335e79] rounded-full overflow-hidden refimg">
-          <img
+          <Image
             src={amine1}
             alt=""
             className=" translate-y-1 scale-110 object-cover "

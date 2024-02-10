@@ -14,7 +14,7 @@ const ClientLayout = ({ children }: { children: React.ReactNode }) => {
         <MenubuttonNav2 />
         <Viewbutton />
         <Upbutton />
-        <main className="container flex-1">{children}</main>
+        <main className="">{children}</main>
       </div>
     </Provider>
   );
