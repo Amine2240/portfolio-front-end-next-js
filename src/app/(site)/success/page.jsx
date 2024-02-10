@@ -1,10 +1,10 @@
-"use client"
+"use client";
 import { useRef } from "react";
 import Transition from "../../../../transition";
 import Minifooter from "../../components/minifooter";
 import { useState, useEffect } from "react";
 import { hoverfunction } from "../../components/hoverfunction";
-import { useNavigate } from "react-router-dom";
+import Link from "next/link";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
@@ -19,7 +19,7 @@ const Success = () => {
   useEffect(() => {
     hoverfunction(button, setxPos, setyPos);
   }, []);
-  const navigateTo = useNavigate();
+  // const navigateTo = useNavigate();
 
   useEffect(() => {
     gsap.fromTo(
@@ -52,19 +52,20 @@ const Success = () => {
           <p className=" text-xl">I will contact you as soon as possible</p>
         </div>
         <section className=" relative flex place-content-end">
-          <button
-            className="  sm:h-[200px] sm:w-[200px] h-[170px] w-[170px]  bg-red-500 rounded-full z-10 ml-10 text-xl mr-40 buttonref"
-            ref={button}
-            style={{
-              transform: `translate(${xPos}px, ${yPos}px)`,
-            }}
-            onClick={() => {
-              dispatch(setsuccessbooleen(true));
-              navigateTo("/");
-            }}
-          >
-            Back to home
-          </button>
+          <Link href="/">
+            <button
+              className="  sm:h-[200px] sm:w-[200px] h-[170px] w-[170px]  bg-red-500 rounded-full z-10 ml-10 text-xl mr-40 buttonref"
+              ref={button}
+              style={{
+                transform: `translate(${xPos}px, ${yPos}px)`,
+              }}
+              onClick={() => {
+                dispatch(setsuccessbooleen(true));
+              }}
+            >
+              Back to home
+            </button>
+          </Link>
           <div className=" h-[1.5px] w-[94%] mx-auto bg-gray-600 my-5 absolute bottom-20 "></div>
         </section>
       </div>
