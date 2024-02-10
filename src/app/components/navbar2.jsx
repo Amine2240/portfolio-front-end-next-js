@@ -31,21 +31,6 @@ const Navbar2 = ({ navbar2bool, setnavbar2bool }) => {
     });
   }, [scrollboolen]);
 
-  useEffect(() => {
-    const mytext = new SplitType(".mytext");
-    gsap.from(mytext.chars, {
-      y: 100,
-      opacity: 0.3,
-      delay: 0.2,
-      stagger: 0.05,
-      // ease: "back.out(1)",
-      scrollTrigger: {
-        trigger: navref0.current,
-        // trigger: !navbar2bool ? mytext : "",
-        // markers: true,
-      },
-    });
-  }, [navbar2bool]);
   const navref0 = useRef();
   const navref1 = useRef();
   const navref2 = useRef();
@@ -56,20 +41,56 @@ const Navbar2 = ({ navbar2bool, setnavbar2bool }) => {
       name: "work",
       reference: navref1,
       link: "work",
+      classname: "textwork",
     },
     {
       id: 1,
       name: "about",
       reference: navref2,
       link: "about",
+      classname: "textabout",
     },
     {
       id: 2,
       name: "contact",
       reference: navref3,
       link: "contact",
+      classname: "textcontact",
     },
   ];
+  useEffect(() => {
+    navelements.map((item) => {
+      const mytext = new SplitType(`.${item.classname}`);
+      gsap.from(mytext.chars, {
+        y: 90,
+        // opacity: 0.3,
+        delay: 0.1,
+        stagger: 0.03,
+        duration : 0.25,
+        // ease: "back.out(1)",
+        scrollTrigger: {
+          trigger: navref0.current,
+          // trigger: !navbar2bool ? mytext : "",
+          // markers: true,
+        },
+      });
+    });
+
+    const mytext = new SplitType('.texthome');
+      gsap.from(mytext.chars, {
+        y: 90,
+        // opacity: 0.3,
+        delay: 0.1,
+        stagger: 0.03,
+        duration : 0.25,
+        // ease: "back.out(1)",
+        scrollTrigger: {
+          trigger: navref0.current,
+          // trigger: !navbar2bool ? mytext : "",
+          // markers: true,
+        },
+      });
+  }, [navbar2bool]);
   // const navrefs = [
   //   { reference: navref0, class: "navref0" },
   //   { reference: navref1, class: "navref1" },
@@ -121,8 +142,9 @@ const Navbar2 = ({ navbar2bool, setnavbar2bool }) => {
               }}
               style={{
                 color: pathname == `/` ? "red" : "white",
+                clipPath : 'polygon(0 0, 100% 0, 100% 100%, 0% 100%)'
               }}
-              className=" capitalize navref0  mytext hover:text-red-500 group mx-auto  "
+              className=" capitalize navref0 texthome hover:text-red-500 group mx-auto  "
               ref={navref0}
             >
               <p className="  mylabel cursor-pointer tracking-tighter font-medium    sm:text-8xl text-6xl">
@@ -140,8 +162,9 @@ const Navbar2 = ({ navbar2bool, setnavbar2bool }) => {
                   }}
                   style={{
                     color: pathname == `/${item.name}` ? "red" : "white",
+                    clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
                   }}
-                  className=" capitalize navref0  mytext group"
+                  className={` capitalize navref0 ${item.classname} group `}
                   ref={item.reference}
                   key={item.id}
                 >
