@@ -5,9 +5,9 @@
   position: fixed;
   top: 0;
   left: 0;
-  transform-origin: bottom ;
+  transform-origin: bottom;
   z-index: 50;
-  
+
   clip-path: circle(180vh at 50% 180vh);
 }
 
@@ -18,7 +18,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  transform-origin: top ;
+  transform-origin: top;
   z-index: 50;
   clip-path: circle(180vh at 50% -80vh);
 

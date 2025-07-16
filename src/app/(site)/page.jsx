@@ -9,7 +9,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Footer from "../components/footer";
 gsap.registerPlugin(ScrollTrigger);
-import Transition from "../../../transition";
+// import Transition from "./transition";
 import Whoami from "../components/whoami";
 import Worksection from "../components/worksection";
 
@@ -30,4 +30,4 @@ const Home = () => {
   );
 };
 
-export default Transition(Home);
+export default Home;

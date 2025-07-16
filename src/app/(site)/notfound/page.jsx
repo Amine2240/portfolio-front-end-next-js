@@ -1,6 +1,6 @@
 "use client";
 import { useRef } from "react";
-import Transition from "../../../../transition";
+// import Transition from "../../../../transition";
 import Minifooter from "../../components/minifooter";
 import { useState, useEffect } from "react";
 import { hoverfunction } from "../../components/hoverfunction";
@@ -67,4 +67,4 @@ const Notfound = ({ navbar2bool }) => {
   );
 };
 
-export default Transition(Notfound);
+export default Notfound;

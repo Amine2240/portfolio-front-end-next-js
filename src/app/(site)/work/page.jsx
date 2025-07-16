@@ -7,7 +7,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 import { useEffect, useRef, useState } from "react";
 import Footer from "../../components/footer";
-import Transition from "../../../../transition";
+// import Transition from "../transition";
 import { Works } from "../../components/works";
 import { hoverfunction } from "../../components/hoverfunction";
 import { motion } from "framer-motion";
@@ -259,4 +259,4 @@ const Work = () => {
 };
 
 // eslint-disable-next-line react-refresh/only-export-components
-export default Transition(Work);
+export default Work;

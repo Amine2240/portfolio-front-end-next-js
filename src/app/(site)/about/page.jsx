@@ -5,7 +5,7 @@ import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
-import Transition from "../../../../transition";
+// import Transition from "../transition";
 import amineetic1 from "../../assets/amineetic1.jpg";
 import aminedahou from "../../assets/aminedahou.jpg";
 import SplitType from "split-type";
@@ -165,7 +165,6 @@ const About = () => {
               ref={dahoudivref}
               alt=""
               className=" w-full object-cover"
-              
             />
           </div>
         </div>
@@ -222,4 +221,4 @@ const About = () => {
 };
 
 // eslint-disable-next-line react-refresh/only-export-components
-export default Transition(About);
+export default About;

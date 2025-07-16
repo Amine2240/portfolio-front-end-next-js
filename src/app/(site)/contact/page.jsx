@@ -8,7 +8,7 @@ import { useRef, useState, useEffect } from "react";
 import axios from "axios";
 // import facebook from "../assets/icons/facebook.png";
 // import instagram from "../assets/icons/instagram.png";
-import Transition from "../../../../transition";
+// import Transition from "../transition";
 import { hoverfunction } from "../../components/hoverfunction";
 import Contactdetails from "../../components/contactdetails";
 // import { useNavigate } from "react-router-dom";
@@ -26,27 +26,27 @@ const Contact = () => {
     need: "",
   });
 
-  const submitclientinfo = async (e) => {
-    try {
-      e.preventDefault();
-      const response = await axios.post(
-        // "https://amine-portfolio-backend.onrender.com/client",
-        "http://localhost:5000/client",
-        clientinfo
-      );
-      if (response.status == 200 && Object.keys(response.data).length != 0) {
-        navigateTo("/success");
-      } else {
-        navigateTo("/fail");
-      }
-      // response.status == 200 && dispatch(setsuccessbooleen(true));
-      // console.log("successbooleen", successbooleen);
-      console.log("response status", response.status);
-      console.log("response", response);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const submitclientinfo = async (e) => {
+  //   try {
+  //     e.preventDefault();
+  //     const response = await axios.post(
+  //       // "https://amine-portfolio-backend.onrender.com/client",
+  //       "http://localhost:5000/client",
+  //       clientinfo
+  //     );
+  //     if (response.status == 200 && Object.keys(response.data).length != 0) {
+  //       navigateTo("/success");
+  //     } else {
+  //       navigateTo("/fail");
+  //     }
+  //     // response.status == 200 && dispatch(setsuccessbooleen(true));
+  //     // console.log("successbooleen", successbooleen);
+  //     console.log("response status", response.status);
+  //     console.log("response", response);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -84,11 +84,13 @@ const Contact = () => {
         <div className=" flex w-full   place-content-between pt-16 flex-wrap-reverse">
           <div className=" xl:w-[70%] md:w-[60%]  w-full">
             <form
-              onSubmit={(e) => {
-                submitclientinfo(e);
+              action="https://formsubmit.co/kadoumamine@gmail.com"
+              // onSubmit={(e) => {
+              //   submitclientinfo(e);
 
-                // navigateTo(`${successbooleen ? "/success" : "/fail"} `);
-              }}
+              //   // navigateTo(`${successbooleen ? "/success" : "/fail"} `);
+              // }}
+              method="POST"
               className="   flex flex-col place-content-between w-full h-[170vh]  p-10"
             >
               <label
@@ -143,6 +145,14 @@ const Contact = () => {
                   setclientinfo({ ...clientinfo, need: e.target.value });
                 }}
               ></textarea>
+              <input type="text" name="_honey" style={{ display: "none" }} />
+              <input type="hidden" name="_captcha" value="false" />
+              <input
+                type="hidden"
+                name="_next"
+                value="http://aminekadoum.vercel.app/success"
+              />
+
               <section className=" relative mb-10 z-0">
                 <button
                   className="  md:h-[200px] md:w-[200px] h-[180px] w-[180px] bg-red-500 rounded-full z-30 ml-10 text-2xl"
@@ -150,6 +160,7 @@ const Contact = () => {
                   style={{
                     transform: `translate(${xPos}px, ${yPos}px)`,
                   }}
+                  type="submit"
                 >
                   Send
                 </button>
@@ -164,4 +175,4 @@ const Contact = () => {
   );
 };
 
-export default Transition(Contact);
+export default Contact;
