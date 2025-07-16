@@ -15,11 +15,13 @@ import Contactdetails from "../../components/contactdetails";
 // import { useDispatch } from "react-redux";
 // import { setsuccessbooleen } from "../redux/successSlice";
 // import { useSelector } from "react-redux";
+import { useRouter } from "next/navigation";
 
 const Contact = () => {
   // const navigateTo = useNavigate();
   // const successbooleen = useSelector((state) => state.successbooleen.value);
   // const dispatch = useDispatch();
+  const router = useRouter();
   const [clientinfo, setclientinfo] = useState({
     name: "",
     email: "",
@@ -54,6 +56,7 @@ const Contact = () => {
   const button = useRef();
   const [xPos, setxPos] = useState(0);
   const [yPos, setyPos] = useState(0);
+  const [isSubmitting, setisSubmitting] = useState(false);
   useEffect(() => {
     hoverfunction(button, setxPos, setyPos);
   }, [xPos, yPos]);
@@ -75,6 +78,38 @@ const Contact = () => {
     );
   }, []);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setisSubmitting(true);
+    try {
+      const response = await fetch(
+        "https://formsubmit.co/ajax/kadoumamine@gmail.com",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(clientinfo),
+        }
+      );
+      if (response.ok) {
+        sessionStorage.setItem("formSubmitted", "true");
+        // small delay to ensure sessionStorage is persisted
+        await new Promise((resolve) => setTimeout(resolve, 50));
+        router.push("/success");
+      } else {
+        console.error("FormSubmit failed", await response.json());
+        router.push("/not-found");
+      }
+    } catch (error) {
+      console.error("Error submitting form", error);
+      router.push("/not-found");
+    } finally {
+      setisSubmitting(false);
+    }
+  };
+
   return (
     <ReactLenis root>
       <div className=" text-white bg-[#1C1D20] pt-32">
@@ -84,13 +119,7 @@ const Contact = () => {
         <div className=" flex w-full   place-content-between pt-16 flex-wrap-reverse">
           <div className=" xl:w-[70%] md:w-[60%]  w-full">
             <form
-              action="https://formsubmit.co/kadoumamine@gmail.com"
-              // onSubmit={(e) => {
-              //   submitclientinfo(e);
-
-              //   // navigateTo(`${successbooleen ? "/success" : "/fail"} `);
-              // }}
-              method="POST"
+              onSubmit={handleSubmit}
               className="   flex flex-col place-content-between w-full h-[170vh]  p-10"
             >
               <label
@@ -146,12 +175,6 @@ const Contact = () => {
                 }}
               ></textarea>
               <input type="text" name="_honey" style={{ display: "none" }} />
-              <input type="hidden" name="_captcha" value="false" />
-              <input
-                type="hidden"
-                name="_next"
-                value="http://aminekadoum.vercel.app/success"
-              />
 
               <section className=" relative mb-10 z-0">
                 <button
@@ -161,8 +184,9 @@ const Contact = () => {
                     transform: `translate(${xPos}px, ${yPos}px)`,
                   }}
                   type="submit"
+                  disabled={isSubmitting}
                 >
-                  Send
+                  {isSubmitting ? "...Sunding" : "Send"}
                 </button>
                 {/* <div className=" h-[.2px] w-full bg-white absolute z-[-1] top-1/2"></div> */}
               </section>

@@ -10,39 +10,56 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 import { useDispatch } from "react-redux";
 import { setsuccessbooleen } from "../../redux/successSlice";
+import { useRouter } from "next/navigation";
 // eslint-disable-next-line react/prop-types
 const Success = () => {
   const button = useRef();
   const [xPos, setxPos] = useState(0);
   const [yPos, setyPos] = useState(0);
-
+  const router = useRouter();
+  const [verified , setVerified] = useState(false)
   useEffect(() => {
-    hoverfunction(button, setxPos, setyPos);
-  }, []);
+  if (!verified) return;
+  const cleanup = hoverfunction(button, setxPos, setyPos);
+  return cleanup;
+}, [verified]); // <-- run only when verified is true
   // const navigateTo = useNavigate();
 
-  useEffect(() => {
-    gsap.fromTo(
-      ".buttonref",
-      {
-        x: -250,
-      },
-      {
-        ease: "back.out(1)",
-        delay: 0.35,
-        duration: 0.7,
-        x: 0,
-      }
-    );
-  }, []);
+useEffect(() => {
+  if (!verified) return;
+  gsap.fromTo(
+    ".buttonref",
+    { x: -250 },
+    {
+      ease: "back.out(1)",
+      delay: 0.35,
+      duration: 0.7,
+      x: 0,
+    }
+  );
+}, [verified]);
   const dispatch = useDispatch();
+
+    useEffect(() => {
+    const timeout = setTimeout(() => {
+      const submitted = sessionStorage.getItem("formSubmitted");
+      if (submitted !== "true") {
+        router.replace("/not-found");
+      } else {
+        sessionStorage.removeItem("formSubmitted");
+        setVerified(true);
+      }
+    }, 50); // wait 50ms before checking
+
+    return () => clearTimeout(timeout);
+  }, []);
+
+  if (!verified) return null;
 
   return (
     <div
-      className={` bg-[#1C1D20] ${
-        // navbar2bool ? "h-[150vh]" :
-        "h-[100vh]"
-      }   text-white sm:overflow-hidden pt-10`}
+      className=" bg-[#1C1D20] 
+        h-[100vh] text-white sm:overflow-hidden pt-10"
     >
       <div className=" w-[80%] mx-auto h-[70vh] flex flex-col md:place-content-end place-content-around sm:mb-20 mb-10">
         <div className=" flex md:place-content-around items-center flex-wrap">
@@ -52,7 +69,7 @@ const Success = () => {
           <p className=" text-xl">I will contact you as soon as possible</p>
         </div>
         <section className=" relative flex place-content-end">
-          <Link href="/">
+          <Link href="/" className="z-10">
             <button
               className="  sm:h-[200px] sm:w-[200px] h-[170px] w-[170px]  bg-red-500 rounded-full z-10 ml-10 text-xl mr-40 buttonref"
               ref={button}

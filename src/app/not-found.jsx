@@ -1,15 +1,15 @@
 "use client";
 import { useRef } from "react";
 // import Transition from "../../../../transition";
-import Minifooter from "../../components/minifooter";
+import Minifooter from "./components/minifooter";
 import { useState, useEffect } from "react";
-import { hoverfunction } from "../../components/hoverfunction";
+import { hoverfunction } from "./components/hoverfunction";
 import Link from "next/link";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 // eslint-disable-next-line react/prop-types
-const Notfound = ({ navbar2bool }) => {
+const Notfound = () => {
   const button = useRef();
   const [xPos, setxPos] = useState(0);
   const [yPos, setyPos] = useState(0);
@@ -17,8 +17,6 @@ const Notfound = ({ navbar2bool }) => {
   useEffect(() => {
     hoverfunction(button, setxPos, setyPos);
   }, []);
-  console.log("navbar2", navbar2bool);
-
   useEffect(() => {
     gsap.fromTo(
       ".buttonref",
@@ -35,9 +33,8 @@ const Notfound = ({ navbar2bool }) => {
   }, []);
   return (
     <div
-      className={` bg-[#1C1D20] ${
-        navbar2bool ? "h-[150vh]" : "h-[100vh]"
-      }   text-white sm:overflow-hidden pt-10`}
+      className=" bg-[#1C1D20]
+      h-[100vh]  text-white sm:overflow-hidden pt-10"
     >
       <div className=" w-[80%] mx-auto h-[70vh] flex flex-col md:place-content-end place-content-around sm:mb-20 mb-10">
         <div className=" flex md:place-content-around items-center flex-wrap">
