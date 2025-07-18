@@ -1,12 +1,15 @@
 "use client";
 import { useRef } from "react";
 // import Transition from "../../../../transition";
-import Minifooter from "./components/minifooter";
+import Minifooter from "@/components/layout/footer/minifooter";
 import { useState, useEffect } from "react";
-import { hoverfunction } from "./components/hoverfunction";
+import { hoverfunction } from "@/utils/hoverfunction";
 import Link from "next/link";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import Header from "@/components/layout/navbar/navbar";
+import BackToHomeButton from "@/components/ui/shared/back-to-home-button";
+
 gsap.registerPlugin(ScrollTrigger);
 // eslint-disable-next-line react/prop-types
 const Notfound = () => {
@@ -32,35 +35,29 @@ const Notfound = () => {
     );
   }, []);
   return (
-    <div
-      className=" bg-[#1C1D20]
+    <>
+      <Header />
+      <div
+        className=" bg-[#1C1D20]
       h-[100vh]  text-white sm:overflow-hidden pt-10"
-    >
-      <div className=" w-[80%] mx-auto h-[70vh] flex flex-col md:place-content-end place-content-around sm:mb-20 mb-10">
-        <div className=" flex md:place-content-around items-center flex-wrap">
-          <p className=" capitalize md:text-8xl text-6xl mb-16 md:mb-5">
-            failed. <br /> Page not found!
-          </p>
-          <p className=" text-xl"></p>
+      >
+        <div className=" w-[80%] mx-auto h-[70vh] flex flex-col md:place-content-end place-content-around sm:mb-20 mb-10">
+          <div className=" flex md:place-content-around items-center flex-wrap">
+            <p className=" capitalize md:text-8xl text-6xl mb-16 md:mb-5">
+              failed. <br /> Page not found!
+            </p>
+            <p className=" text-xl"></p>
+          </div>
+          <section className=" relative flex place-content-end">
+            <Link href="/" className="z-10">
+              <BackToHomeButton button={button} xPos={xPos} yPos={yPos} />
+            </Link>
+            <div className=" h-[1.5px] w-[94%] mx-auto bg-gray-600 my-5 absolute bottom-20 "></div>
+          </section>
         </div>
-        <section className=" relative flex place-content-end">
-          <Link href="/" className="z-10">
-            <button
-              className="  sm:h-[200px] sm:w-[200px] h-[170px] w-[170px]  bg-red-500 rounded-full  ml-10 text-xl mr-40 buttonref"
-              ref={button}
-              style={{
-                transform: `translate(${xPos}px, ${yPos}px)`,
-              }}
-              onClick={() => {}}
-            >
-              Back to home
-            </button>
-          </Link>
-          <div className=" h-[1.5px] w-[94%] mx-auto bg-gray-600 my-5 absolute bottom-20 "></div>
-        </section>
+        <Minifooter />
       </div>
-      <Minifooter />
-    </div>
+    </>
   );
 };
 

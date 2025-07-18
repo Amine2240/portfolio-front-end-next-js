@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 // import { Link } from "react-router-dom";
-import { hoverfunction } from "./hoverfunction";
+import { hoverfunction } from "../../../utils/hoverfunction";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 import SplitType from "split-type";
-import Link from 'next/link';
+import Link from "next/link";
 const Whoami = () => {
   const moremebutton = useRef();
   const tl = gsap.timeline();

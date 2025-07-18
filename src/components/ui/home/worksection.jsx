@@ -1,8 +1,8 @@
 // import { useNavigate } from "react-router-dom";
-import { hoverfunction } from "./hoverfunction";
+import { hoverfunction } from "@/utils/hoverfunction";
 import { useState, useEffect, useRef } from "react";
-import { Works } from "./works";
-import Workschema from "./workschema";
+import { Works } from "@/data/works";
+import Workschema from "../work/workschema";
 import { useRouter } from "next/navigation";
 
 const Worksection = () => {
@@ -38,7 +38,7 @@ const Worksection = () => {
     hoverfunction(moreworkbutton, setxPos2, setyPos2);
     hoverfunction(contactmebutton, setxPos3, setyPos3);
   }, []);
-  const router = useRouter()
+  const router = useRouter();
   return (
     <div
       className=" flex place-content-around flex-wrap items-start  mt-44  h-fit mb-10"
@@ -52,7 +52,7 @@ const Worksection = () => {
           className=" font-bold sm:text-[3rem] text-[2rem] tracking-tighter  h-fit "
           //
         >
-          My work during <br /> 1 year of experience
+          My work during <br /> 3 year of experience
         </p>
         <p className=" sm:w-[400px] w-full font-medium text-[1.5rem] text-gray-800 sm:p-0 px-5">
           As a full-stack developer specialised in MERN-stack and flutter, I
@@ -62,7 +62,7 @@ const Worksection = () => {
           <button
             onClick={() => {
               // navigateTo("/work");
-              router.push("/work")
+              router.push("/work");
             }}
             className=" h-[85px] w-[300px] sm:h-[80px] sm:w-[200px] bg-black text-white rounded-[20px] mb-5 md:mr-5"
             style={{
@@ -75,7 +75,7 @@ const Worksection = () => {
           <button
             onClick={() => {
               // navigateTo("/contact");
-              router.push("/contact")
+              router.push("/contact");
             }}
             className=" h-[85px] w-[300px] sm:h-[80px] sm:w-[200px] bg-white text-black border-black border-2 rounded-[20px] mb-5"
             style={{

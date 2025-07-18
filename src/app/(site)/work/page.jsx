@@ -6,41 +6,16 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 import { useEffect, useRef, useState } from "react";
-import Footer from "../../components/footer";
+import Footer from "@/components/layout/footer/footer";
 // import Transition from "../transition";
-import { Works } from "../../components/works";
-import { hoverfunction } from "../../components/hoverfunction";
+import { Works } from "@/data/works";
+import { hoverfunction } from "@/utils/hoverfunction";
 import { motion } from "framer-motion";
-import Workschema from "../../components/workschema";
-
-// import works from "../../../server/works";
-// import axios from "axios";
+import Workschema from "@/components/ui/work/workschema";
 
 // eslint-disable-next-line react-refresh/only-export-components
 const Work = () => {
-  // const workref0 = useRef();
-  // const workref1 = useRef();
-  // const workref2 = useRef();
-  // const workref3 = useRef();
-  // const workref4 = useRef();
-  // const workref5 = useRef();
-  // const worklist = [workref0, workref1, workref2, workref3, workref4, workref5];
-
   const [allworks, setallworks] = useState(Works);
-  //if we want to use the works from the front we replace [] by works that are imported and delete getallworks function
-  // const getallworksfromdb = async () => {
-  //   try {
-  //     const response = await axios.get("http://localhost:5000/api/getallworks");
-  //     console.log("response after getting : ", response.data);
-  //     setallworks(response.data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   getallworksfromdb();
-  // }, []);
 
   const [index, setindex] = useState(0);
   const action0 = useRef();
@@ -86,12 +61,6 @@ const Work = () => {
   const [webworks, setwebworks] = useState(allworks);
   const [mobileworks, setmobileworks] = useState(allworks);
   useEffect(() => {
-    // setallworks(
-    //   allworks.map((item, i) => {
-    //     return { ...item, reference: worklist[i] };
-    //   })
-    // );
-
     setwebworks(
       allworks.filter((item) => {
         return item.type == "web";
@@ -123,22 +92,6 @@ const Work = () => {
   const containerref = useRef();
   const visitref = useRef();
 
-  // useEffect(() => {
-  //   gsap.fromTo(
-  //     visitref.current,
-  //     {
-  //       y: 0,
-  //     },
-  //     {
-  //       y: -100,
-  //       scrollTrigger: {
-  //         scrub: 1,
-  //         trigger: visitref.current,
-  //       },
-  //     }
-  //   );
-  // }, []);
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -164,8 +117,8 @@ const Work = () => {
     <ReactLenis root>
       <div className="">
         <div className=" flex flex-col items-center pt-20">
-          <p className=" text-5xl font-semibold text-center capitalize 2xl:text-8xl xl:text-8xl lg:text-7xl tracking-tighter">
-            Developing unforgettable digital experiences.
+          <p className=" mt-10 text-5xl font-semibold text-center capitalize 2xl:text-8xl xl:text-8xl lg:text-7xl tracking-tighter">
+            Developing unforgettable <br /> digital experiences.
           </p>
           <div className=" mt-12">
             {toggleactions.map((item) => {

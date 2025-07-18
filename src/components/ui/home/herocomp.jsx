@@ -1,12 +1,12 @@
-"use client"
+"use client";
 import "./herocomp.css";
 // import try2 from "../assets/try22.png";
-import amine1 from "../assets/amine01compressed.webp";
+import amine1 from "@/assets/amine01compressed.webp";
 // import { useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef, useEffect, useState } from "react";
-import { hoverfunction } from "./hoverfunction";
+import { hoverfunction } from "@/utils/hoverfunction";
 // import { useNavigate } from "react-router-dom";
 gsap.registerPlugin(ScrollTrigger);
 // import { motion } from "framer-motion";

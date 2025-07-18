@@ -2,7 +2,7 @@
 import { useRef, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
-import { hoverfunction } from "./hoverfunction";
+import { hoverfunction } from "@/utils/hoverfunction";
 const Upbutton = () => {
   const upbutton = useRef();
   const [scrollyvalue, setscrollyvalue] = useState(0);

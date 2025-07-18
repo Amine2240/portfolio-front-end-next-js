@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-no-target-blank */
 import { useDispatch } from "react-redux";
-import { sethoverbooleen } from "../redux/hoverslice";
+import { sethoverbooleen } from "../../../stores/hoverslice";
 // import gsap from "gsap";
 // import ScrollTrigger from "gsap/ScrollTrigger";
 // gsap.registerPlugin(ScrollTrigger);
@@ -28,9 +28,8 @@ const Workschema = ({ item }) => {
   const router = useRouter();
   const pathname = usePathname();
   useEffect(() => {
-  
     dispatch(sethoverbooleen(false));
-  }, [dispatch , pathname]);
+  }, [dispatch, pathname]);
   return (
     <div>
       <a href={item.weblink} target="_blank">

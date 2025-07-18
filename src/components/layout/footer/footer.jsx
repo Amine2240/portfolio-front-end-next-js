@@ -1,17 +1,13 @@
-/* eslint-disable react/jsx-no-target-blank */
-/* eslint-disable react/no-unknown-property */
-// import { useNavigate } from "react-router-dom";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 "use client";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 import { useEffect, useRef, useState } from "react";
-import amine1 from "../assets/amine01compressed.webp";
-import { hoverfunction } from "./hoverfunction";
+import amine1 from "@/assets/amine01compressed.webp";
+import { hoverfunction } from "../../../utils/hoverfunction";
 import Minifooter from "./minifooter";
 import Image from "next/image";
+import Link from "next/link";
 // import { motion } from "framer-motion";
 const Footer = () => {
   // const navigateTo = useNavigate();
@@ -124,18 +120,20 @@ const Footer = () => {
               email me{" "}
             </button>
           </a>
-          <button
-            onClick={() => {
-              // navigateTo("/contact");
-            }}
-            style={{
-              transform: `translate(${xPos2}px, ${yPos2}px)`,
-            }}
-            ref={contactbutton}
-            className=" refbutton border hover:bg-[#0d486c] mx-2 sm:h-[100px] h-[70px] w-[450px]    capitalize text-xl font-semibold rounded-full ml-5"
-          >
-            contact me
-          </button>
+          <Link href="/contact">
+            <button
+              onClick={() => {
+                // navigateTo("/contact");
+              }}
+              style={{
+                transform: `translate(${xPos2}px, ${yPos2}px)`,
+              }}
+              ref={contactbutton}
+              className=" refbutton border hover:bg-[#0d486c] mx-2 sm:h-[100px] h-[70px] w-[450px]    capitalize text-xl font-semibold rounded-full ml-5"
+            >
+              contact me
+            </button>
+          </Link>
         </div>
         <Minifooter />
       </div>

@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 import SplitType from "split-type";
 // import { memo } from "react";
 import { usePathname } from "next/navigation";
-import Minifooter from "./minifooter";
+import Minifooter from "../footer/minifooter";
 import Link from "next/link";
 
 // eslint-disable-next-line react/prop-types
@@ -66,7 +66,7 @@ const Navbar2 = ({ navbar2bool, setnavbar2bool }) => {
         // opacity: 0.3,
         delay: 0.1,
         stagger: 0.03,
-        duration : 0.25,
+        duration: 0.25,
         // ease: "back.out(1)",
         scrollTrigger: {
           trigger: navref0.current,
@@ -76,20 +76,20 @@ const Navbar2 = ({ navbar2bool, setnavbar2bool }) => {
       });
     });
 
-    const mytext = new SplitType('.texthome');
-      gsap.from(mytext.chars, {
-        y: 90,
-        // opacity: 0.3,
-        delay: 0.1,
-        stagger: 0.03,
-        duration : 0.25,
-        // ease: "back.out(1)",
-        scrollTrigger: {
-          trigger: navref0.current,
-          // trigger: !navbar2bool ? mytext : "",
-          // markers: true,
-        },
-      });
+    const mytext = new SplitType(".texthome");
+    gsap.from(mytext.chars, {
+      y: 90,
+      // opacity: 0.3,
+      delay: 0.1,
+      stagger: 0.03,
+      duration: 0.25,
+      // ease: "back.out(1)",
+      scrollTrigger: {
+        trigger: navref0.current,
+        // trigger: !navbar2bool ? mytext : "",
+        // markers: true,
+      },
+    });
   }, [navbar2bool]);
   // const navrefs = [
   //   { reference: navref0, class: "navref0" },
@@ -142,7 +142,7 @@ const Navbar2 = ({ navbar2bool, setnavbar2bool }) => {
               }}
               style={{
                 color: pathname == `/` ? "red" : "white",
-                clipPath : 'polygon(0 0, 100% 0, 100% 100%, 0% 100%)'
+                clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
               }}
               className=" capitalize navref0 texthome hover:text-red-500 group mx-auto  "
               ref={navref0}

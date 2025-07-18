@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import { hoverfunction } from "./hoverfunction";
+import { hoverfunction } from "@/utils/hoverfunction";
 import Navbar2 from "./navbar2";
 // import { useLocation } from "react-router-dom";
 import { usePathname } from "next/navigation";

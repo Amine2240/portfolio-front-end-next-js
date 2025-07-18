@@ -1,46 +1,46 @@
 "use client";
 import { useRef } from "react";
 // import Transition from "../../../../transition";
-import Minifooter from "../../components/minifooter";
+import Minifooter from "@/components/layout/footer/minifooter";
 import { useState, useEffect } from "react";
-import { hoverfunction } from "../../components/hoverfunction";
+import { hoverfunction } from "@/utils/hoverfunction";
 import Link from "next/link";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
-import { useDispatch } from "react-redux";
-import { setsuccessbooleen } from "../../redux/successSlice";
 import { useRouter } from "next/navigation";
+import BackToHomeButton from "@/components/ui/shared/back-to-home-button";
+
 // eslint-disable-next-line react/prop-types
 const Success = () => {
   const button = useRef();
   const [xPos, setxPos] = useState(0);
   const [yPos, setyPos] = useState(0);
   const router = useRouter();
-  const [verified , setVerified] = useState(false)
+  const [verified, setVerified] = useState(false);
   useEffect(() => {
-  if (!verified) return;
-  const cleanup = hoverfunction(button, setxPos, setyPos);
-  return cleanup;
-}, [verified]); // <-- run only when verified is true
+    if (!verified) return;
+    const cleanup = hoverfunction(button, setxPos, setyPos);
+    return cleanup;
+  }, [verified]); // <-- run only when verified is true
   // const navigateTo = useNavigate();
 
-useEffect(() => {
-  if (!verified) return;
-  gsap.fromTo(
-    ".buttonref",
-    { x: -250 },
-    {
-      ease: "back.out(1)",
-      delay: 0.35,
-      duration: 0.7,
-      x: 0,
-    }
-  );
-}, [verified]);
-  const dispatch = useDispatch();
+  useEffect(() => {
+    if (!verified) return;
+    gsap.fromTo(
+      ".buttonref",
+      { x: -250 },
+      {
+        ease: "back.out(1)",
+        delay: 0.35,
+        duration: 0.7,
+        x: 0,
+      }
+    );
+  }, [verified]);
+  // const dispatch = useDispatch();
 
-    useEffect(() => {
+  useEffect(() => {
     const timeout = setTimeout(() => {
       const submitted = sessionStorage.getItem("formSubmitted");
       if (submitted !== "true") {
@@ -70,18 +70,7 @@ useEffect(() => {
         </div>
         <section className=" relative flex place-content-end">
           <Link href="/" className="z-10">
-            <button
-              className="  sm:h-[200px] sm:w-[200px] h-[170px] w-[170px]  bg-red-500 rounded-full z-10 ml-10 text-xl mr-40 buttonref"
-              ref={button}
-              style={{
-                transform: `translate(${xPos}px, ${yPos}px)`,
-              }}
-              onClick={() => {
-                dispatch(setsuccessbooleen(true));
-              }}
-            >
-              Back to home
-            </button>
+            <BackToHomeButton button={button} xPos={xPos} yPos={yPos} />
           </Link>
           <div className=" h-[1.5px] w-[94%] mx-auto bg-gray-600 my-5 absolute bottom-20 "></div>
         </section>

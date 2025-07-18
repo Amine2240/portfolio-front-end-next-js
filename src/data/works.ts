@@ -1,13 +1,12 @@
-import businesscart from "../assets/cpt_business_cart_1.webp";
-import ecommerce from "../assets/ecommerce.webp";
-import movieapp from "../assets/movieapp.webp";
-import musicapp from "../assets/musicapp.webp";
-import realestate from "../assets/realestate.webp";
-import deliveryapp1 from "../assets/cartmobile.webp";
-import deliveryapp2 from "../assets/itemmobile.webp";
-import chedmed from "../assets/chedmed.png";
-import ccc from "../assets/ccc.png";
-import opensource from "../assets/opensource.webp";
+import businesscart from "@/assets/cpt_business_cart_1.webp";
+import ecommerce from "@/assets/ecommerce.webp";
+import movieapp from "@/assets/movieapp.webp";
+import realestate from "@/assets/realestate.webp";
+import deliveryapp1 from "@/assets/cartmobile.webp";
+import deliveryapp2 from "@/assets/itemmobile.webp";
+import chedmed from "@/assets/chedmed.png";
+import ccc from "@/assets/ccc.png";
+import opensource from "@/assets/opensource.webp";
 
 // const workref0 = useRef();
 // const workref1 = useRef();

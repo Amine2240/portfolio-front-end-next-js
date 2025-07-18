@@ -1,24 +1,17 @@
 "use client";
-import Image from "next/image";
-
 /* eslint-disable react/jsx-no-target-blank */
-import Herocomp from "../components/herocomp";
+import Herocomp from "@/components/ui/home/herocomp";
 import { ReactLenis } from "@studio-freight/react-lenis";
 import { useEffect } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Footer from "../components/footer";
-gsap.registerPlugin(ScrollTrigger);
+import Footer from "@/components/layout/footer/footer";
 // import Transition from "./transition";
-import Whoami from "../components/whoami";
-import Worksection from "../components/worksection";
+import Whoami from "@/components/ui/home/whoami";
+import Worksection from "@/components/ui/home/worksection";
 
 const Home = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  // console.log("resume", myresume.chars);
 
   return (
     <ReactLenis root>
