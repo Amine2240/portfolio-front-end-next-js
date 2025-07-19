@@ -9,6 +9,7 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import Header from "@/components/layout/navbar/navbar";
 import BackToHomeButton from "@/components/ui/shared/back-to-home-button";
+import {useHoverEffect} from "@/hooks/useHoverEffect.ts"
 
 gsap.registerPlugin(ScrollTrigger);
 // eslint-disable-next-line react/prop-types
@@ -17,9 +18,8 @@ const Notfound = () => {
   const [xPos, setxPos] = useState(0);
   const [yPos, setyPos] = useState(0);
 
-  useEffect(() => {
-    hoverfunction(button, setxPos, setyPos);
-  }, []);
+  useHoverEffect({button , setxPos , setyPos})
+
   useEffect(() => {
     gsap.fromTo(
       ".buttonref",

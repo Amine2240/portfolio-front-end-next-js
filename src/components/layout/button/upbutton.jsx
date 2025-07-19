@@ -2,21 +2,25 @@
 import { useRef, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
-import { hoverfunction } from "@/utils/hoverfunction";
+import { useHoverEffect } from "@/hooks/useHoverEffect";
+
 const Upbutton = () => {
   const upbutton = useRef();
   const [scrollyvalue, setscrollyvalue] = useState(0);
   useEffect(() => {
-    window.addEventListener("scroll", () => {
+    const handleScroll = () => {
       setscrollyvalue(window.scrollY);
-    });
-  }, [scrollyvalue]);
+    };
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const [xPos2, setxPos2] = useState(0);
   const [yPos2, setyPos2] = useState(0);
-  useEffect(() => {
-    hoverfunction(upbutton, setxPos2, setyPos2);
-  }, []);
+  useHoverEffect({ button: upbutton, setxPos: setxPos2, setyPos: setyPos2 });
   return (
     <div
       onClick={() => {

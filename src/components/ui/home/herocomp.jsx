@@ -6,12 +6,13 @@ import amine1 from "@/assets/amine01compressed.webp";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef, useEffect, useState } from "react";
-import { hoverfunction } from "@/utils/hoverfunction";
 // import { useNavigate } from "react-router-dom";
 gsap.registerPlugin(ScrollTrigger);
 // import { motion } from "framer-motion";
 // import { Helmet } from "react-helmet";
 import Image from "next/image";
+import { useHoverEffect } from "@/hooks/useHoverEffect";
+
 const Herocomp = () => {
   // const mytext = new SplitType(".iam");
   // console.log('my text : ',mytext);
@@ -61,25 +62,31 @@ const Herocomp = () => {
     );
   }, []);
 
-  const gettime = () => {
-    const now = new Date();
-    const hours = now.getHours() < 10 ? "0" + now.getHours() : now.getHours();
-    const minutes =
-      now.getMinutes() < 10 ? "0" + now.getMinutes() : now.getMinutes();
-    settime(hours + ":" + minutes + `${hours < 12 ? "AM" : "PM"}`);
-    setTimeout(() => {
-      gettime();
-    }, 1000);
-  };
   useEffect(() => {
-    gettime();
+    const updateTime = () => {
+      const now = new Date();
+      const hours = now.getHours();
+      const minutes = now.getMinutes();
+      const formattedHours = hours < 10 ? "0" + hours : hours;
+      const formattedMinutes = minutes < 10 ? "0" + minutes : minutes;
+      const ampm = hours < 12 ? "AM" : "PM";
+
+      settime(`${formattedHours}:${formattedMinutes} ${ampm}`);
+    };
+
+    // Update immediately
+    updateTime();
+
+    // Set up interval
+    const timeInterval = setInterval(updateTime, 1000);
+
+    // Cleanup interval on unmount
+    return () => clearInterval(timeInterval);
   }, []);
 
   const [xPos, setxPos] = useState(0);
   const [yPos, setyPos] = useState(0);
-  useEffect(() => {
-    hoverfunction(contactbutton, setxPos, setyPos);
-  }, [xPos, yPos]);
+  useHoverEffect({ button: contactbutton, setxPos, setyPos });
 
   useEffect(() => {
     gsap.to(".name", {

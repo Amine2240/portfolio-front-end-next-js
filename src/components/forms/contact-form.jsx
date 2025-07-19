@@ -1,10 +1,9 @@
-import React from "react";
 import { useRouter } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
-import { hoverfunction } from "@/utils/hoverfunction";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
+import { useHoverEffect } from "@/hooks/useHoverEffect";
 
 const ContactForm = () => {
   const router = useRouter();
@@ -22,9 +21,7 @@ const ContactForm = () => {
   const [xPos, setxPos] = useState(0);
   const [yPos, setyPos] = useState(0);
   const [isSubmitting, setisSubmitting] = useState(false);
-  useEffect(() => {
-    hoverfunction(button, setxPos, setyPos);
-  }, [xPos, yPos]);
+  useHoverEffect({button , setxPos , setyPos})
 
   useEffect(() => {
     gsap.fromTo(

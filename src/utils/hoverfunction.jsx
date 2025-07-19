@@ -1,11 +1,13 @@
 export const hoverfunction = (button, setxPos, setyPos) => {
-  button?.current?.addEventListener("mouseenter", () => {
+  if (!button?.current) return null;
+
+  const element = button.current;
+
+  const handleMouseEnter = () => {
     button.current.style.transition = "all 0.4s ease";
+  };
 
-    // Add a smooth transition effect
-  });
-
-  button?.current?.addEventListener("mousemove", (e) => {
+  const handleMouseMove = (e) => {
     const hoverbutton = e.target;
     const buttonrect = hoverbutton?.getBoundingClientRect();
     const centerx = buttonrect.left + buttonrect.width / 2;
@@ -14,10 +16,22 @@ export const hoverfunction = (button, setxPos, setyPos) => {
     // setyPos((e.clientY - e.target.offsetHeight) / 20);
     setxPos((e.clientX - centerx) / 1.5);
     setyPos((e.clientY - centery) / 1.5);
-  });
+  };
 
-  button?.current?.addEventListener("mouseleave", () => {
+  const handleMouseLeave = () => {
     setxPos(0);
     setyPos(0);
-  });
+  };
+
+  element.addEventListener("mouseenter", handleMouseEnter);
+
+  element.addEventListener("mousemove", handleMouseMove);
+
+  element.addEventListener("mouseleave", handleMouseLeave);
+
+  return () => {
+    element.removeEventListener("mouseenter", handleMouseEnter);
+    element.removeEventListener("mousemove", handleMouseMove);
+    element.removeEventListener("mouseleave", handleMouseLeave);
+  };
 };

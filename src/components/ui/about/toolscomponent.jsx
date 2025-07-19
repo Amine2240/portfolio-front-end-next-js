@@ -1,9 +1,6 @@
 import { useRef } from "react";
 // import { motion, useTransform, useScroll } from "framer-motion";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
-import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
-import { hoverfunction } from "@/utils/hoverfunction";
+
 import { useEffect, useState } from "react";
 // import Swiper from 'swiper';
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
@@ -14,20 +11,10 @@ import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import "swiper/css/bundle";
 import Image from "next/image";
 import { toolsList } from "@/data/tools";
+import LeftRightButtons from "@/components/ui/about/left-right-buttons"
 
 const Toolscomponent = () => {
-  const rightbutton = useRef();
-  const leftbutton = useRef();
-  const [xPos, setxPos] = useState(0);
-  const [yPos, setyPos] = useState(0);
-  const [xPosright, setxPosright] = useState(0);
-  const [yPosright, setyPosright] = useState(0);
-
-  useEffect(() => {
-    hoverfunction(leftbutton, setxPos, setyPos);
-    hoverfunction(rightbutton, setxPosright, setyPosright);
-  }, []);
-  const swiper = useSwiper();
+  
 
   const [slidesperview, setslidesperview] = useState(3);
   useEffect(() => {
@@ -96,28 +83,7 @@ const Toolscomponent = () => {
           })}
         </Swiper>
 
-        <div className=" w-[200px] mx-auto flex place-content-between my-10">
-          <button
-            ref={leftbutton}
-            style={{
-              transform: `translate(${xPos}px, ${yPos}px)`,
-            }}
-            className=" previousslide w-20 h-20 border-2 border-black rounded-full"
-            onClick={() => swiper?.slidePrev()}
-          >
-            <FontAwesomeIcon icon={faChevronLeft} className=" text-2xl" />
-          </button>
-          <button
-            ref={rightbutton}
-            style={{
-              transform: `translate(${xPosright}px,${yPosright}px)`,
-            }}
-            className=" nextslide w-20 h-20 border-2 border-black rounded-full"
-            onClick={() => swiper?.slideNext()}
-          >
-            <FontAwesomeIcon icon={faChevronRight} className=" text-2xl" />
-          </button>
-        </div>
+        <LeftRightButtons/>
       </div>
     </div>
   );
