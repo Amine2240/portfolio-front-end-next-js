@@ -1,6 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 "use client";
-import { ReactLenis } from "@studio-freight/react-lenis";
+import { ReactLenis } from "lenis/react";
 import Contactdetails from "@/components/ui/contact/contactdetails";
 import ContactForm from "@/components/forms/contact-form";
 

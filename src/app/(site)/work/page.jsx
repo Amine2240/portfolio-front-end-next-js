@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/jsx-no-target-blank */
 "use client";
-import { ReactLenis } from "@studio-freight/react-lenis";
+import { ReactLenis } from "lenis/react";
 import { useEffect, useRef, useState } from "react";
 import Footer from "@/components/layout/footer/footer";
 // import Transition from "../transition";

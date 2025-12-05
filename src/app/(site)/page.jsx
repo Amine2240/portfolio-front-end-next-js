@@ -1,7 +1,7 @@
 "use client";
 /* eslint-disable react/jsx-no-target-blank */
 import Herocomp from "@/components/ui/home/herocomp";
-import { ReactLenis } from "@studio-freight/react-lenis";
+import { ReactLenis } from "lenis/react";
 import { useEffect } from "react";
 import Footer from "@/components/layout/footer/footer";
 // import Transition from "./transition";

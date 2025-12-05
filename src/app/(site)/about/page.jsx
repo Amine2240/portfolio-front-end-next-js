@@ -1,6 +1,6 @@
 "use client";
 import Footer from "@/components/layout/footer/footer";
-import { ReactLenis } from "@studio-freight/react-lenis";
+import { ReactLenis } from "lenis/react";
 import { useEffect } from "react";
 import Toolscomponent from "@/components/ui/about/toolscomponent";
 import AmineDahou from "@/components/ui/about/amine-dahou";
