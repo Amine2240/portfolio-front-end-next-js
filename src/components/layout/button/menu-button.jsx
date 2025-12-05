@@ -3,14 +3,27 @@ import { useHoverEffect } from "@/hooks/useHoverEffect.ts";
 
 const MenuButton = ({ setnavbar2bool, navbar2bool }) => {
   const [scrollyvalue, setscrollyvalue] = useState(0);
+  const [isLargeScreen, setIsLargeScreen] = useState(true); // Default to true for SSR
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
+    setIsLargeScreen(window.innerWidth > 568);
+
     const handleScroll = () => {
       setscrollyvalue(window.scrollY);
     };
+
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth > 568);
+    };
+
     window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -20,6 +33,10 @@ const MenuButton = ({ setnavbar2bool, navbar2bool }) => {
 
   useHoverEffect({ button: menubutton, setxPos, setyPos });
 
+  // Determine scale - only apply scale(0) after component has mounted on client
+  const shouldHide =
+    isMounted && !navbar2bool && scrollyvalue < 20 && isLargeScreen;
+
   return (
     <div
       onClick={() => {
@@ -28,12 +45,7 @@ const MenuButton = ({ setnavbar2bool, navbar2bool }) => {
       ref={menubutton}
       style={{
         transform: `translate(${xPos}px, ${yPos}px) ${
-          !navbar2bool &&
-          scrollyvalue < 20 &&
-          typeof window !== "undefined" &&
-          window.innerWidth > 568
-            ? "scale(0)"
-            : "scale(1)"
+          shouldHide ? "scale(0)" : "scale(1)"
         }`,
         // transform: !navbar2bool && scrollyvalue < 20 ? "scale-0" : "scale-100",
         // top : 'calc(100% -20px)'

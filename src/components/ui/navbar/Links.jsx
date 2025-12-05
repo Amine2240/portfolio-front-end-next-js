@@ -23,9 +23,8 @@ export default function Links({ pathname }) {
     <ul className=" flex  w-[300px] place-content-around mr-5  ">
       {navelements.map((item) => {
         return (
-          <Link href={`/${item.link}`}>
+          <Link key={item.id} href={`/${item.link}`}>
             <li
-              key={item.id}
               onClick={() => {
                 // navigateTo(`${item.link}`);
                 // setindex(i);

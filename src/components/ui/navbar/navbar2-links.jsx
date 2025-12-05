@@ -1,4 +1,4 @@
-import {  useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 // import Transition from "../../transition";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -8,8 +8,8 @@ import SplitType from "split-type";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
-const Navbar2Links = ({setnavbar2bool , navbar2bool}) => {
-  const pathname = usePathname()
+const Navbar2Links = ({ setnavbar2bool, navbar2bool }) => {
+  const pathname = usePathname();
   const navref0 = useRef();
   const navref1 = useRef();
   const navref2 = useRef();
@@ -95,7 +95,7 @@ const Navbar2Links = ({setnavbar2bool , navbar2bool}) => {
       </Link>
       {navelements.map((item) => {
         return (
-          <Link href={`/${item.link}`}>
+          <Link key={item.id} href={`/${item.link}`}>
             <li
               onClick={() => {
                 setnavbar2bool(false);
@@ -106,7 +106,6 @@ const Navbar2Links = ({setnavbar2bool , navbar2bool}) => {
               }}
               className={` capitalize navref0 ${item.classname} group `}
               ref={item.reference}
-              key={item.id}
             >
               <p
                 className={`mylabel cursor-pointer tracking-tighter font-medium sm:text-8xl text-6xl hover:text-red-500 `}
