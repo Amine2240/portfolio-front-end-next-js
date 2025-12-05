@@ -16,26 +16,21 @@ const EmailContactButtons = () => {
     setyPos: setyPos2,
   });
   useHoverEffect({ button: emailbutton, setxPos, setyPos });
-  
 
   return (
-    <div className="flex  place-content-center  flex-wrap h-[200px]">
-      <a
-        href="mailto:kadoumamine@gmail.com"
-        className=" sm:w-[450px] w-[320px]"
-        //w-[350px]
-      >
+    <div className="flex place-content-center flex-wrap gap-3 px-4 sm:px-0">
+      <a href="mailto:kadoumamine@gmail.com" className="w-full sm:w-[450px]">
         <button
           style={{
             transform: `translate(${xPos}px, ${yPos}px)`,
           }}
           ref={emailbutton}
-          className=" refbutton border hover:bg-[#0d486c] mx-2 sm:h-[100px] h-[70px] w-full  capitalize text-xl font-semibold  rounded-full mb-3 sm:mb-0"
+          className="refbutton border hover:bg-[#0d486c] sm:h-[100px] h-[60px] w-full capitalize text-lg sm:text-xl font-semibold rounded-full"
         >
           email me{" "}
         </button>
       </a>
-      <Link href="/contact">
+      <Link href="/contact" className="w-full sm:w-[450px]">
         <button
           onClick={() => {
             // navigateTo("/contact");
@@ -44,7 +39,7 @@ const EmailContactButtons = () => {
             transform: `translate(${xPos2}px, ${yPos2}px)`,
           }}
           ref={contactbutton}
-          className=" refbutton border hover:bg-[#0d486c] mx-2 sm:h-[100px] h-[70px] w-[450px]    capitalize text-xl font-semibold rounded-full ml-5"
+          className="refbutton border hover:bg-[#0d486c] sm:h-[100px] h-[60px] w-full capitalize text-lg sm:text-xl font-semibold rounded-full"
         >
           contact me
         </button>

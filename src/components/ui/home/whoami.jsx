@@ -96,9 +96,9 @@ const Whoami = () => {
       >
         Who am I?
       </p>
-      <div className=" flex sm:place-content-around place-content-center h-[200px] items-center flex-wrap flex-row-reverse  mt-40 sm:mt-0">
+      <div className="flex sm:flex-row flex-col-reverse sm:place-content-around place-content-center items-center gap-8 sm:gap-0 mt-10 sm:mt-0 sm:h-[200px]">
         <p
-          className="text-2xl  sm:w-[500px] w-full  resume font-medium sm:mt-0 mt-20"
+          className="text-xl sm:text-2xl sm:w-[500px] w-full px-2 sm:px-0 resume font-medium text-center sm:text-left"
           ref={resumeref}
         >
           <span
@@ -114,7 +114,7 @@ const Whoami = () => {
             }}
           >
             {" "}
-            stuck developer , I freelance with high{" "}
+            stack developer , I freelance with high{" "}
           </span>
           <span
             style={{
@@ -143,7 +143,7 @@ const Whoami = () => {
         </p>
         <Link href="/about">
           <button
-            className=" text-lg sm:mt-32 sm:mb-0 mb-2 h-[200px] w-[200px] bg-black rounded-full sm:mr-0 mr-10 text-white"
+            className="text-lg h-[150px] w-[150px] sm:h-[200px] sm:w-[200px] sm:mt-32 bg-black rounded-full text-white shrink-0"
             ref={moremebutton}
             style={{
               transform: `translate(${xPos}px, ${yPos}px)`,
