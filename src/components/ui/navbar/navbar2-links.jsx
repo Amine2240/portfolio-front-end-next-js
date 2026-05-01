@@ -22,13 +22,13 @@ const Navbar2Links = ({ setnavbar2bool, navbar2bool }) => {
       link: "work",
       classname: "textwork",
     },
-    {
-      id: 1,
-      name: "about",
-      reference: navref2,
-      link: "about",
-      classname: "textabout",
-    },
+    // {
+    //   id: 1,
+    //   name: "about",
+    //   reference: navref2,
+    //   link: "about",
+    //   classname: "textabout",
+    // },
     {
       id: 2,
       name: "contact",
@@ -81,10 +81,10 @@ const Navbar2Links = ({ setnavbar2bool, navbar2bool }) => {
             // setindex(-1);
           }}
           style={{
-            color: pathname == `/` ? "red" : "white",
+            color: pathname == `/` ? "#529fbe" : "white",
             clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
           }}
-          className=" capitalize navref0 texthome hover:text-red-500 group mx-auto  "
+          className=" capitalize navref0 texthome hover:[#89c2d7] group mx-auto color-[#f0f9fb]  "
           ref={navref0}
         >
           <p className="  mylabel cursor-pointer tracking-tighter font-medium    sm:text-8xl text-6xl">
@@ -101,14 +101,14 @@ const Navbar2Links = ({ setnavbar2bool, navbar2bool }) => {
                 setnavbar2bool(false);
               }}
               style={{
-                color: pathname == `/${item.name}` ? "red" : "white",
+                color: pathname == `/${item.name}` ? "#529fbe" : "white",
                 clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
               }}
               className={` capitalize navref0 ${item.classname} group `}
               ref={item.reference}
             >
               <p
-                className={`mylabel cursor-pointer tracking-tighter font-medium sm:text-8xl text-6xl hover:text-red-500 `}
+                className={`mylabel cursor-pointer tracking-tighter font-medium sm:text-8xl text-6xl hover:text-[#89c2d7] `}
               >
                 {item.name}
               </p>

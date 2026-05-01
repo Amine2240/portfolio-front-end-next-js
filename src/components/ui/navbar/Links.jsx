@@ -7,11 +7,11 @@ export default function Links({ pathname }) {
       name: "work",
       link: "work",
     },
-    {
-      id: 1,
-      name: "about",
-      link: "about",
-    },
+    // {
+    //   id: 1,
+    //   name: "about",
+    //   link: "about",
+    // },
     {
       id: 2,
       name: "contact",
@@ -20,7 +20,7 @@ export default function Links({ pathname }) {
   ];
 
   return (
-    <ul className=" flex  w-[300px] place-content-around mr-5  ">
+    <ul className=" flex place-content-around mr-5  ">
       {navelements.map((item) => {
         return (
           <Link key={item.id} href={`/${item.link}`}>
@@ -42,7 +42,7 @@ export default function Links({ pathname }) {
                   transition: "all ease 0.3s",
                   transitionDelay: "0.3s",
                 }}
-                className=" text-lg mylabel cursor-pointer capitalize font-medium"
+                className=" text-lg mylabel cursor-pointer capitalize font-medium mr-10 "
               >
                 {item.name}
               </p>
