@@ -6,7 +6,7 @@
 const BackToHomeButton = ({ button, xPos, yPos }) => {
   return (
     <button
-      className="  sm:h-[200px] sm:w-[200px] h-[170px] w-[170px]  bg-red-500 rounded-full z-10 ml-10 text-xl mr-40 buttonref"
+      className="  sm:h-[200px] sm:w-[200px] h-[170px] w-[170px]  bg-[#2d5872] rounded-full z-10 ml-10 text-xl mr-40 buttonref"
       ref={button}
       style={{
         transform: `translate(${xPos}px, ${yPos}px)`,

@@ -35,7 +35,7 @@ export default function Links({ pathname }) {
                   color:
                     // JSON.parse(localStorage.getItem("navbarindex"))
                     pathname == `/${item.name}`
-                      ? "red"
+                      ? "#529fbe"
                       : pathname == `/work` || pathname == "/about"
                       ? "black"
                       : "white",
