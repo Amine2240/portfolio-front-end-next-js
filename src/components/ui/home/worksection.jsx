@@ -42,7 +42,7 @@ const Worksection = () => {
           className=" font-bold sm:text-[3rem] text-[2rem] tracking-tighter  h-fit "
           //
         >
-          My work during <br /> 3 year of experience
+          My work during <br /> {new Date().getFullYear() - 2022}  years of experience
         </p>
         <p className=" sm:w-[400px] w-full font-medium text-[1.5rem] text-gray-800 sm:p-0 px-5">
           As a full-stack developer specialised in MERN-stack and flutter, I

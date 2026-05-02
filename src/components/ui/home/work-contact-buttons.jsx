@@ -32,7 +32,7 @@ const WorkContactButtons = () => {
           }}
           ref={moreworkbutton}
         >
-          more work{" "}
+          More work{" "}
         </button>
       </Link>
       <Link href="/contact">
@@ -43,7 +43,7 @@ const WorkContactButtons = () => {
           }}
           ref={contactmebutton}
         >
-          contact me{" "}
+          Contact me{" "}
         </button>
       </Link>
     </div>

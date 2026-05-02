@@ -1,51 +1,40 @@
-/* .myradio:checked+.mylabel {
-  background-color: rgba(255, 0, 0, 0.247);
-  transition: all ease .5s;
-} */
-
 .navfalse {
   clip-path: circle(0px at calc(100% - 75px) 75px);
-  background-color: black;
-  /* display: none; */
-
 }
 
+/* ✅ circle(150%) instead of 80% — covers all viewport sizes without clipping corners */
 .navtrue {
-  clip-path: circle(80%);
-  background-color: black;
+  clip-path: circle(150%);
 }
 
 .mytext {
-  /* font-kerning: none; */
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
 
-/* .mytext:hover{
-  color: red;
-} */
-
+/* ✅ Teal-tinted gradient instead of pure white — harmonizes with the dark nav palette */
 .bgtmp {
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.508), transparent);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(82, 159, 190, 0.25) 0%,
+    transparent 70%
+  );
+  /* opacity: 0; */
+  /* transform: translateY(80px); */
+  /* transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s; */
 }
+
+/* ✅ Fires when navtrue is applied to the parent nav */
+/* .navtrue .bgtmp {
+  opacity: 1;
+  transform: translateY(0);
+} */
 
 .scrollindic {
   animation: scrollindicanimation 1.5s infinite;
 }
 
 @keyframes scrollindicanimation {
-  0% {
-    top: 0;
-    opacity: 0;
-  }
-
-  50% {
-    top: 40%;
-    opacity: 1;
-  }
-
-  100% {
-    top: 80%;
-    opacity: 0;
-  }
-
+  0%   { top: 0;   opacity: 0; }
+  50%  { top: 40%; opacity: 1; }
+  100% { top: 80%; opacity: 0; }
 }

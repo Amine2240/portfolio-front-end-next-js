@@ -3,24 +3,31 @@ import { socialsList } from "@/data/socials";
 
 const Minifooter = () => {
   return (
-    <div className=" flex sm:place-content-between items-center place-content-start mb-7 flex-row flex-wrap-reverse w-full text-white">
-      <p className=" ml-10">
-        <span className=" text-gray-500">Version</span> <br />
-        2023 © Edition{" "}
+    // ✅ flex-wrap (not flex-wrap-reverse) so mobile stacks naturally: socials on top, version below
+    <div className="flex sm:flex-row flex-col gap-6 sm:gap-0 sm:place-content-between items-start sm:items-center mb-8 px-8 sm:px-10 w-full text-white">
+      <p className="text-sm">
+        <span className="text-white/40 uppercase tracking-widest text-xs">Version</span>
+        <br />
+        {new Date().getFullYear()} © Edition
       </p>
 
-      <div className="w-[450px] flex flex-col sm:mr-20 sm:place-content-start ">
-        <p className=" ml-[42px] text-gray-500 ">socials</p>
-        <ul className=" flex  place-content-evenly">
-          {socialsList.map((item) => {
-            return (
-              <li key={item.id}>
-                <a target="_blank" href={item.link}>
-                  {item.text}
-                </a>
-              </li>
-            );
-          })}
+      {/* ✅ Removed fixed w-[450px] — fluid width works on all screens */}
+      <div className="flex flex-col gap-2">
+        <p className="text-white/40 uppercase tracking-widest text-xs">Socials</p>
+        <ul className="flex gap-6 flex-wrap">
+          {socialsList.map((item) => (
+            <li key={item.id}>
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href={item.link}
+                // ✅ Added hover state and transition
+                className="text-white/70 hover:text-white transition-colors duration-200 text-sm"
+              >
+                {item.text}
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
     </div>

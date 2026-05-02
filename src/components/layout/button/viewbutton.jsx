@@ -1,51 +1,49 @@
-"use client"
+"use client";
 import { useSelector } from "react-redux";
-import { useState, useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
+
 const Viewbutton = () => {
   const hoverbooleen = useSelector((state) => state.hoverbooleen.value);
-  const cursorref = useRef();
-  const [x, setx] = useState(0);
-  const [y, sety] = useState(0);
+  const cursorref = useRef(null);
+
   useEffect(() => {
-    const handlemousemove = (e) => {
-      setx(e.clientX - 9);
-      sety(e.clientY - 9);
+    const handleMouseMove = (e) => {
+      if (!cursorref.current) return;
+      // Using translate3d for hardware acceleration (smoother movement)
+      cursorref.current.style.transform = `translate3d(${e.clientX - 9}px, ${e.clientY - 9}px, 0) ${
+        hoverbooleen ? "scale(7)" : "scale(0)"
+      }`;
     };
-    window.addEventListener("mousemove", handlemousemove);
-  }, []);
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, [hoverbooleen]); // Re-bind when scale changes to ensure transform isn't overwritten
+
   return (
     <div
-      style={{
-        top: y + "px",
-        left: x + "px",
-        transform: hoverbooleen ? "scale(7)" : "scale(0)",
-        backgroundColor: "#067BC2",
-        // backgroundImage : "linear-gradient(to top , black,blue)",
-        zIndex: "50",
-        // animationDelay : 3,
-        // transform: 'skewY(8)',
-        pointerEvents: "none",
-        borderRadius: "100%",
-        position: "fixed",
-        height: "18px",
-        width: "18px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        transitionDuration: "0.3s",
-        transitionTimingFunction: "ease-out",
-        transition: "transform .3s cubic-bezier(0.7, 0, 0.3, 1)",
-      }}
-      className={`cursor`}
       ref={cursorref}
+      className={`
+        fixed top-0 left-0 z-50 pointer-events-none flex items-center justify-center
+        h-[18px] w-[18px] rounded-full
+        /* Modern Glassmorphism & Gradient */
+        bg-gradient-to-br from-[#23395B]/90 to-[#8EA8C3]/90
+        backdrop-blur-sm border border-[#8EA8C3]/40 shadow-xl
+        transition-transform duration-[400ms] ease-out
+      `}
+      style={{
+        willChange: "transform",
+      }}
     >
-      <p
-        className={`${
-          hoverbooleen ? " scale-100  font-medium" : " scale-0"
-        } transition-all text-white text-[3px]`}
+      <span
+        className={`
+          text-white font-bold uppercase tracking-widest select-none
+          text-[2px] leading-none
+          ${hoverbooleen ? "opacity-100 scale-100" : "opacity-0 scale-50"}
+          transition-all duration-300 delay-100
+        `}
       >
         View
-      </p>
+      </span>
     </div>
   );
 };

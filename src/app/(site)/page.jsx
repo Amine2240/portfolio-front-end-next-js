@@ -16,7 +16,7 @@ const Home = () => {
   return (
     <ReactLenis root>
       <Herocomp />
-      <Whoami />
+      {/* <Whoami /> */}
       <Worksection />
       <Footer />
     </ReactLenis>

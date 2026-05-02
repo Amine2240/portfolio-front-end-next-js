@@ -5,15 +5,17 @@ import Viewbutton from "@/components/layout/button/viewbutton";
 import MenubuttonNav2 from "@/components/layout/navbar/menubutton&nav2";
 import { Provider } from "react-redux";
 import { store } from "@/stores/store";
-// import { AnimatePresence } from "framer-motion";
+
 const ClientLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <Provider store={store}>
       <Header />
       <MenubuttonNav2 />
-      <Viewbutton />
+      <div className="hidden md:block">
+        <Viewbutton />
+      </div>
       <Upbutton />
-      <main className="">{children}</main>
+      <main>{children}</main>
     </Provider>
   );
 };
